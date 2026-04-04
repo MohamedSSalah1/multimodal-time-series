@@ -1,8 +1,14 @@
-# Raw and processed data — never commit these
-data/
+# Ignore all data files but preserve folder structure
+data/**
+!data/
+!data/*/
+!data/*/*/
+!data/*/*/*/
+!data/**/.gitkeep
 
 # Logs
-logs/
+logs/*
+!logs/.gitkeep
 
 # Python
 __pycache__/
