@@ -1,0 +1,236 @@
+# =============================================================================
+# pipeline.yaml
+# Central configuration for all preprocessing parameters.
+# All scripts read from this file — nothing is hardcoded in Python.
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# HAR — Human Activity Recognition (PAMAP2 + WISDM)
+# -----------------------------------------------------------------------------
+har:
+  # Sampling rates
+  pamap2_hz: 100          # PAMAP2 native rate
+  wisdm_hz: 20            # WISDM native rate
+  target_hz: 20           # Mandated by assessment brief
+
+  # Resampling
+  pamap2_decimate_factor: 5   # 100 Hz / 20 Hz = factor 5
+
+  # Channel schema — 6 channels shared across both datasets
+  # PAMAP2: wrist IMU (±16g acc + gyro)
+  # WISDM: watch (acc + gyro)
+  channels: [acc_x, acc_y, acc_z, gyr_x, gyr_y, gyr_z]
+  n_channels: 6
+
+  # PAMAP2 column indices (0-indexed) for wrist IMU
+  pamap2_wrist_cols:
+    acc_x: 3
+    acc_y: 4
+    acc_z: 5
+    gyr_x: 9
+    gyr_y: 10
+    gyr_z: 11
+
+  # Signal cleaning
+  outlier_acc_g: 16.0         # Clip accelerometer to ±16g (sensor range)
+  outlier_gyr_dps: 2000.0     # Clip gyroscope to ±2000 deg/s (sensor limit)
+  max_interp_gap_sec: 1.0     # Max gap length to interpolate — longer gaps excluded
+
+  # Pretraining windows — no labels, no overlap
+  pretrain_window_sec: 10     # Mandated by assessment brief
+  pretrain_overlap: 0.0       # Mandated by assessment brief
+
+  # Supervised windows — with labels, 50% overlap
+  supervised_window_sec: 5    # Mandated by assessment brief
+  supervised_overlap: 0.5     # Mandated by assessment brief
+
+  # Label assignment for supervised windows
+  label_method: majority_vote # Assign window label by majority vote of samples
+
+  # PAMAP2 activity ID 0 — transient, must be discarded
+  pamap2_null_label: 0
+
+  # Subject-level splits
+  pamap2_subjects: [101, 102, 103, 104, 105, 106, 107, 108, 109]
+  pamap2_val_subjects: [108]
+  pamap2_test_subjects: [109]
+
+  wisdm_val_subjects: [1646, 1647, 1648, 1649, 1650]
+  wisdm_test_subjects: [1641, 1642, 1643, 1644, 1645]
+
+  # Unified activity label schema
+  # Shared activities used in supervised output
+  # All activities used in pretraining output (no labels)
+  unified_labels:
+    # Shared across PAMAP2 and WISDM
+    walking: 0
+    running: 1
+    stairs: 2
+    sitting: 3
+    standing: 4
+    computer_work: 5
+    folding_laundry: 6
+    # PAMAP2 only
+    lying: 7
+    cycling: 8
+    nordic_walking: 9
+    watching_tv: 10
+    car_driving: 11
+    ascending_stairs: 12
+    descending_stairs: 13
+    vacuum_cleaning: 14
+    ironing: 15
+    house_cleaning: 16
+    playing_soccer: 17
+    rope_jumping: 18
+    # WISDM only
+    brushing_teeth: 19
+    eating_soup: 20
+    eating_chips: 21
+    eating_pasta: 22
+    drinking: 23
+    eating_sandwich: 24
+    kicking: 25
+    playing_catch: 26
+    dribbling: 27
+    writing: 28
+    clapping: 29
+
+  # Shared labels for supervised output only
+  shared_labels: [walking, running, stairs, sitting, standing, computer_work, folding_laundry]
+
+  # PAMAP2 label mapping to unified schema
+  pamap2_label_map:
+    1: lying
+    2: sitting
+    3: standing
+    4: walking
+    5: running
+    6: cycling
+    7: nordic_walking
+    9: watching_tv
+    10: computer_work
+    11: car_driving
+    12: ascending_stairs
+    13: descending_stairs
+    16: vacuum_cleaning
+    17: ironing
+    18: folding_laundry
+    19: house_cleaning
+    20: playing_soccer
+    24: rope_jumping
+
+  # WISDM label mapping to unified schema
+  wisdm_label_map:
+    A: walking
+    B: running
+    C: stairs
+    D: sitting
+    E: standing
+    F: computer_work
+    G: brushing_teeth
+    H: eating_soup
+    I: eating_chips
+    J: eating_pasta
+    K: drinking
+    L: eating_sandwich
+    M: kicking
+    O: playing_catch
+    P: dribbling
+    Q: writing
+    R: clapping
+    S: folding_laundry
+
+# -----------------------------------------------------------------------------
+# EEG — Electroencephalography (EEGMMIDB)
+# -----------------------------------------------------------------------------
+eeg:
+  target_hz: 160            # Native rate retained — no resampling
+  n_channels: 64            # Full 64-channel montage
+  runs: [4, 8, 12]          # Motor imagery runs only — mandated by brief
+
+  # Event codes
+  events:
+    T0: 0                   # Rest
+    T1: 1                   # Left fist imagery
+    T2: 2                   # Right fist imagery
+
+  # Windowing
+  window_sec: 4             # Mandated by assessment brief
+  window_samples: 640       # 4s x 160 Hz
+
+  # Filtering
+  bandpass_low_hz: 1.0      # Removes slow drift
+  bandpass_high_hz: 40.0    # Removes high frequency noise
+  bandpass_order: 4         # 4th order Butterworth
+  notch_hz: 50.0            # UK mains interference
+
+  # Re-referencing
+  reference: average        # Average reference — standard for motor imagery
+
+  # Artefact rejection
+  amplitude_threshold_uv: 500.0   # Exclude channels/segments > 500 µV
+
+  # Subject-level splits
+  n_subjects: 109
+  val_subjects_start: 98    # Subjects 98–103 → validation
+  val_subjects_end: 103
+  test_subjects_start: 104  # Subjects 104–109 → test
+  test_subjects_end: 109
+
+# -----------------------------------------------------------------------------
+# ECG — Electrocardiography (PTB-XL)
+# -----------------------------------------------------------------------------
+ecg:
+  target_hz: 100            # 100 Hz chosen — sufficient for 40 Hz bandpass
+  n_leads: 12               # Full 12-lead ECG
+  window_sec: 10            # PTB-XL records are already 10 seconds
+  window_samples: 1000      # 10s x 100 Hz
+
+  # Filtering
+  bandpass_low_hz: 0.5      # Removes baseline wander
+  bandpass_high_hz: 40.0    # Removes high frequency noise
+  bandpass_order: 4         # 4th order Butterworth
+
+  # Normalisation
+  normalisation: z_score    # Z-score per lead per record
+
+  # Pre-defined folds (from ptbxl_database.csv strat_fold column)
+  train_folds: [1, 2, 3, 4, 5, 6, 7, 8]
+  val_fold: 9               # Human-validated labels
+  test_fold: 10             # Human-validated labels
+
+  # Lead names (standard 12-lead)
+  lead_names: [I, II, III, AVL, AVR, AVF, V1, V2, V3, V4, V5, V6]
+
+# -----------------------------------------------------------------------------
+# Paths
+# -----------------------------------------------------------------------------
+paths:
+  raw: data/raw
+  interim: data/interim
+  processed: data/processed
+  reports: reports
+  logs: logs
+  submission: submission_sample
+
+  # Dataset-specific raw paths
+  pamap2_raw: data/raw/pamap2/PAMAP2_Dataset
+  wisdm_raw: data/raw/wisdm
+  eegmmidb_raw: data/raw/eegmmidb
+  ptbxl_raw: data/raw/ptbxl
+
+# -----------------------------------------------------------------------------
+# Output format
+# -----------------------------------------------------------------------------
+output:
+  dtype: float32            # All arrays stored as float32
+  format: npz               # numpy .npz — stores signals + metadata together
+  submission_samples: 100   # 100 windows per dataset in submission pack
+
+# -----------------------------------------------------------------------------
+# Manifest
+# -----------------------------------------------------------------------------
+manifest:
+  download_manifest: data/manifest_downloads.json
+  output_manifest: data/manifest_outputs.json
