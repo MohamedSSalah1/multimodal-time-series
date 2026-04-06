@@ -323,20 +323,41 @@ ptbxl/
 ---
 
 ## Usage
+## Usage
+
+### Step 1 — Clone and set up environment
 ```bash
-# Step 1 — Clone and set up environment
 git clone https://github.com/MohamedSSalah1/multimodal-time-series.git
 cd multimodal-time-series
 conda env create -f environment.yml
 conda activate biomedical_pipeline
+```
 
-# Step 2 — Download all datasets
-bash setup_data.sh
+### Step 2 — Download all datasets
+The script activates the conda environment automatically and downloads
+all four datasets with integrity checks. EEGMMIDB (~2-3 hrs) and
+PTB-XL (~5 hrs) are large — run with caffeinate and nohup to keep
+the process running independently of your terminal session:
+```bash
+caffeinate -i nohup bash setup_data.sh &
+```
 
-# Step 3 — Run preprocessing
+Monitor progress in real time:
+```bash
+tail -f logs/setup_*.log
+```
+
+caffeinate prevents your Mac from sleeping during the download.
+nohup keeps the process running even if the terminal closes.
+The conda environment is activated automatically inside the script.
+
+### Step 3 — Run preprocessing
+```bash
 python preprocess.py
+```
 
-# Step 4 — Run validation
+### Step 4 — Run validation
+```bash
 python validate_outputs.py
 ```
 
