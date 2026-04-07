@@ -208,17 +208,21 @@ verify_official_checksum() {
         return
     fi
 
-    local filename
-    filename=$(basename "$file")
+    # Build relative path from the sha256sums file directory
+    # e.g. data/raw/eegmmidb/S001/S001R04.edf → S001/S001R04.edf
+    local sha256_dir
+    sha256_dir=$(dirname "$sha256sums_file")
+    local relative_path
+    relative_path="${file#$sha256_dir/}"
 
-    if ! grep -q "$filename" "$sha256sums_file"; then
+    if ! grep -q "$relative_path" "$sha256sums_file"; then
         echo -e "${YELLOW}      $name not listed in SHA256SUMS.txt — skipping.${NC}"
         return
     fi
 
     echo "      Verifying $name against official PhysioNet checksum..."
     local expected
-    expected=$(grep " $filename$" "$sha256sums_file" | awk '{print $1}')
+    expected=$(grep " $relative_path$" "$sha256sums_file" | awk '{print $1}')
 
     local actual
     if command -v sha256sum &>/dev/null; then
