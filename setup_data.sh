@@ -349,13 +349,24 @@ download_file \
 check_min_size "data/raw/ptbxl/ptbxl.zip" 1400 "PTB-XL"
 verify_recorded_checksum "data/raw/ptbxl/ptbxl.zip" "PTB-XL"
 
-echo "      Extracting PTB-XL..."
+echo "      Extracting PTB-XL (outer zip)..."
 unzip -q -o data/raw/ptbxl/ptbxl.zip -d data/raw/ptbxl/
 
-# Verify key files exist
+# Check if nested zip exists and extract if so
+INNER_ZIP=$(find data/raw/ptbxl -name "*.zip" ! -name "ptbxl.zip" | head -1)
+if [ -n "$INNER_ZIP" ]; then
+    echo "      Nested zip detected: $INNER_ZIP"
+    echo "      Extracting PTB-XL (inner zip)..."
+    unzip -q -o "$INNER_ZIP" -d data/raw/ptbxl/
+    echo -e "${GREEN}      Inner zip extracted.${NC}"
+fi
+
+# Verify key files exist — search recursively regardless of subfolder name
 PTBXL_CSV=$(find data/raw/ptbxl -name "ptbxl_database.csv" | head -1)
 if [ -z "$PTBXL_CSV" ]; then
     echo -e "${RED}ERROR: PTB-XL extraction failed — ptbxl_database.csv not found.${NC}"
+    echo -e "${RED}Folder structure found:${NC}"
+    find data/raw/ptbxl -type d | sort
     exit 1
 fi
 echo -e "${GREEN}      PTB-XL ready — ptbxl_database.csv confirmed at ${PTBXL_CSV}.${NC}"
