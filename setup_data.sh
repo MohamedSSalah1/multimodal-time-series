@@ -248,8 +248,11 @@ download_file \
 check_min_size "data/raw/pamap2/pamap2.zip" 500 "PAMAP2"
 verify_recorded_checksum "data/raw/pamap2/pamap2.zip" "PAMAP2"
 
-echo "      Extracting PAMAP2..."
+echo "      Extracting PAMAP2 (outer zip)..."
 unzip -q -o data/raw/pamap2/pamap2.zip -d data/raw/pamap2/
+
+echo "      Extracting PAMAP2 (inner zip)..."
+unzip -q -o data/raw/pamap2/PAMAP2_Dataset.zip -d data/raw/pamap2/
 
 # Verify expected folder structure
 if [ ! -d "data/raw/pamap2/PAMAP2_Dataset/Protocol" ]; then
