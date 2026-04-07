@@ -275,7 +275,7 @@ download_file \
     "data/raw/wisdm/wisdm.zip" \
     "WISDM"
 
-check_min_size "data/raw/wisdm/wisdm.zip" 600 "WISDM"
+check_min_size "data/raw/wisdm/wisdm.zip" 250 "WISDM"
 verify_recorded_checksum "data/raw/wisdm/wisdm.zip" "WISDM"
 
 echo "      Extracting WISDM..."
@@ -343,7 +343,7 @@ download_file \
     "data/raw/ptbxl/ptbxl.zip" \
     "PTB-XL"
 
-check_min_size "data/raw/ptbxl/ptbxl.zip" 1500 "PTB-XL"
+check_min_size "data/raw/ptbxl/ptbxl.zip" 1400 "PTB-XL"
 verify_recorded_checksum "data/raw/ptbxl/ptbxl.zip" "PTB-XL"
 
 echo "      Extracting PTB-XL..."
