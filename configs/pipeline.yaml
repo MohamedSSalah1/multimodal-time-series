@@ -216,7 +216,7 @@ paths:
 
   # Dataset-specific raw paths
   pamap2_raw: data/raw/pamap2/PAMAP2_Dataset
-  wisdm_raw: data/raw/wisdm
+  wisdm_raw: data/raw/wisdm/wisdm-dataset/raw
   eegmmidb_raw: data/raw/eegmmidb
   ptbxl_raw: data/raw/ptbxl
 

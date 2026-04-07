@@ -278,12 +278,15 @@ download_file \
 check_min_size "data/raw/wisdm/wisdm.zip" 250 "WISDM"
 verify_recorded_checksum "data/raw/wisdm/wisdm.zip" "WISDM"
 
-echo "      Extracting WISDM..."
+echo "      Extracting WISDM (outer zip)..."
 unzip -q -o data/raw/wisdm/wisdm.zip -d data/raw/wisdm/
 
+echo "      Extracting WISDM (inner zip)..."
+unzip -q -o data/raw/wisdm/wisdm-dataset.zip -d data/raw/wisdm/
+
 # Verify expected folder structure
-WISDM_WATCH_ACCEL=$(find data/raw/wisdm -path "*/watch/accel/*.txt" 2>/dev/null | wc -l)
-WISDM_WATCH_GYRO=$(find data/raw/wisdm -path "*/watch/gyro/*.txt" 2>/dev/null | wc -l)
+WISDM_WATCH_ACCEL=$(find data/raw/wisdm/wisdm-dataset/raw/watch/accel -name "*.txt" 2>/dev/null | wc -l)
+WISDM_WATCH_GYRO=$(find data/raw/wisdm/wisdm-dataset/raw/watch/gyro -name "*.txt" 2>/dev/null | wc -l)
 
 if [ "$WISDM_WATCH_ACCEL" -lt 51 ] || [ "$WISDM_WATCH_GYRO" -lt 51 ]; then
     echo -e "${RED}ERROR: WISDM watch files incomplete.${NC}"
