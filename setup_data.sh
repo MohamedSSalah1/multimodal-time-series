@@ -111,7 +111,7 @@ download_file() {
         echo -e "${YELLOW}      $name already exists — skipping download.${NC}"
     else
         echo "      Downloading $name..."
-        wget --progress=bar:force -O "$dest" "$url" || {
+        wget --progress=bar:force -o "logs/wget/wget-$(date +%s).log" -O "$dest" "$url" || {
             echo -e "${RED}ERROR: Failed to download $name${NC}"
             echo -e "${RED}URL: $url${NC}"
             rm -f "$dest"
