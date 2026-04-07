@@ -218,7 +218,7 @@ verify_official_checksum() {
 
     echo "      Verifying $name against official PhysioNet checksum..."
     local expected
-    expected=$(grep "$filename" "$sha256sums_file" | awk '{print $1}')
+    expected=$(grep " $filename$" "$sha256sums_file" | awk '{print $1}')
 
     local actual
     if command -v sha256sum &>/dev/null; then
