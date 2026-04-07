@@ -333,7 +333,7 @@ echo ""
 
 # ── Step 5: Download PTB-XL ───────────────────────────────────────────────────
 echo -e "${BLUE}[5/7] Downloading PTB-XL (ECG — ~2 GB)...${NC}"
-PTBXL_URL="https://physionet.org/static/published-projects/ptb-xl/ptb-xl-a-large-publicly-available-electrocardiography-dataset-1.0.3.zip"
+PTBXL_URL="https://physionet.org/content/ptb-xl/get-zip/1.0.3/"
 
 # Download official SHA256SUMS.txt first
 download_file \
@@ -515,7 +515,7 @@ manifest = {
         {
             "name": "PTB-XL",
             "modality": "ECG",
-            "source_url": "https://physionet.org/static/published-projects/ptb-xl/ptb-xl-a-large-publicly-available-electrocardiography-dataset-1.0.3.zip",
+            "source_url": "https://physionet.org/content/ptb-xl/get-zip/1.0.3/",
             "landing_page": "https://physionet.org/content/ptb-xl/1.0.3/",
             "local_path": "data/raw/ptbxl",
             "version": "PhysioNet v1.0.3",
