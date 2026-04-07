@@ -218,7 +218,7 @@ paths:
   pamap2_raw: data/raw/pamap2/PAMAP2_Dataset
   wisdm_raw: data/raw/wisdm/wisdm-dataset/raw
   eegmmidb_raw: data/raw/eegmmidb
-  ptbxl_raw: data/raw/ptbxl
+  ptbxl_raw: data/raw/ptbxl/ptb-xl-a-large-publicly-available-electrocardiography-dataset-1.0.3
 
 # -----------------------------------------------------------------------------
 # Output format
