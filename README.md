@@ -324,8 +324,6 @@ ptbxl/
 
 ## Usage
 
-## Usage
-
 ### Step 1 — Clone and set up environment
 ```bash
 git clone https://github.com/MohamedSSalah1/multimodal-time-series.git
