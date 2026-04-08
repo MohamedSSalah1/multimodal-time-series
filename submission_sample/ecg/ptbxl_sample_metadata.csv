@@ -1,0 +1,101 @@
+sample_id,ecg_id,patient_id,dataset_name,modality,source_file,split,strat_fold,primary_label,scp_codes,age,sex,sampling_rate_hz,n_channels,n_samples,lead_names,validated_by_human,qc_flags
+ptbxl_000001,1,15709,ptbxl,ECG,records100/00000/00001_lr,train,3,NORM,"{'NORM': 100.0, 'LVOLT': 0.0, 'SR': 0.0}",56.0,1,100,12,1000,"I,II,III,AVR,AVL,AVF,V1,V2,V3,V4,V5,V6",True,static_noise
+ptbxl_000002,2,13243,ptbxl,ECG,records100/00000/00002_lr,train,2,NORM,"{'NORM': 80.0, 'SBRAD': 0.0}",19.0,0,100,12,1000,"I,II,III,AVR,AVL,AVF,V1,V2,V3,V4,V5,V6",True,none
+ptbxl_000003,3,20372,ptbxl,ECG,records100/00000/00003_lr,train,5,NORM,"{'NORM': 100.0, 'SR': 0.0}",37.0,1,100,12,1000,"I,II,III,AVR,AVL,AVF,V1,V2,V3,V4,V5,V6",True,none
+ptbxl_000004,4,17014,ptbxl,ECG,records100/00000/00004_lr,train,3,NORM,"{'NORM': 100.0, 'SR': 0.0}",24.0,0,100,12,1000,"I,II,III,AVR,AVL,AVF,V1,V2,V3,V4,V5,V6",True,baseline_drift
+ptbxl_000005,5,17448,ptbxl,ECG,records100/00000/00005_lr,train,4,NORM,"{'NORM': 100.0, 'SR': 0.0}",19.0,1,100,12,1000,"I,II,III,AVR,AVL,AVF,V1,V2,V3,V4,V5,V6",True,baseline_drift
+ptbxl_000006,6,19005,ptbxl,ECG,records100/00000/00006_lr,train,4,NORM,"{'NORM': 100.0, 'SR': 0.0}",18.0,1,100,12,1000,"I,II,III,AVR,AVL,AVF,V1,V2,V3,V4,V5,V6",True,baseline_drift
+ptbxl_000007,7,16193,ptbxl,ECG,records100/00000/00007_lr,train,7,NORM,"{'NORM': 100.0, 'SR': 0.0}",54.0,0,100,12,1000,"I,II,III,AVR,AVL,AVF,V1,V2,V3,V4,V5,V6",True,none
+ptbxl_000008,8,11275,ptbxl,ECG,records100/00000/00008_lr,val,9,IMI,"{'IMI': 35.0, 'ABQRS': 0.0, 'SR': 0.0}",48.0,0,100,12,1000,"I,II,III,AVR,AVL,AVF,V1,V2,V3,V4,V5,V6",True,"static_noise,baseline_drift"
+ptbxl_000009,9,18792,ptbxl,ECG,records100/00000/00009_lr,test,10,NORM,"{'NORM': 100.0, 'SR': 0.0}",55.0,0,100,12,1000,"I,II,III,AVR,AVL,AVF,V1,V2,V3,V4,V5,V6",True,static_noise
+ptbxl_000010,10,9456,ptbxl,ECG,records100/00000/00010_lr,val,9,NORM,"{'NORM': 100.0, 'SR': 0.0}",22.0,1,100,12,1000,"I,II,III,AVR,AVL,AVF,V1,V2,V3,V4,V5,V6",True,none
+ptbxl_000011,11,11243,ptbxl,ECG,records100/00000/00011_lr,train,5,NORM,"{'NORM': 80.0, 'SARRH': 0.0}",20.0,1,100,12,1000,"I,II,III,AVR,AVL,AVF,V1,V2,V3,V4,V5,V6",True,"static_noise,baseline_drift"
+ptbxl_000012,12,11031,ptbxl,ECG,records100/00000/00012_lr,train,8,NORM,"{'NORM': 80.0, 'SBRAD': 0.0}",43.0,1,100,12,1000,"I,II,III,AVR,AVL,AVF,V1,V2,V3,V4,V5,V6",True,none
+ptbxl_000013,13,19953,ptbxl,ECG,records100/00000/00013_lr,train,2,NORM,"{'NORM': 100.0, 'SR': 0.0}",58.0,1,100,12,1000,"I,II,III,AVR,AVL,AVF,V1,V2,V3,V4,V5,V6",True,static_noise
+ptbxl_000014,14,12925,ptbxl,ECG,records100/00000/00014_lr,train,7,NORM,"{'NORM': 100.0, 'SR': 0.0}",19.0,1,100,12,1000,"I,II,III,AVR,AVL,AVF,V1,V2,V3,V4,V5,V6",True,none
+ptbxl_000015,15,13375,ptbxl,ECG,records100/00000/00015_lr,train,3,NORM,"{'NORM': 100.0, 'SARRH': 0.0}",17.0,1,100,12,1000,"I,II,III,AVR,AVL,AVF,V1,V2,V3,V4,V5,V6",True,static_noise
+ptbxl_000016,16,10999,ptbxl,ECG,records100/00000/00016_lr,train,6,NORM,"{'NORM': 100.0, 'SR': 0.0}",49.0,0,100,12,1000,"I,II,III,AVR,AVL,AVF,V1,V2,V3,V4,V5,V6",True,baseline_drift
+ptbxl_000017,17,13619,ptbxl,ECG,records100/00000/00017_lr,val,9,AFLT,"{'AFLT': 100.0, 'ABQRS': 0.0, 'AFIB': 0.0}",56.0,0,100,12,1000,"I,II,III,AVR,AVL,AVF,V1,V2,V3,V4,V5,V6",True,static_noise
+ptbxl_000018,18,13619,ptbxl,ECG,records100/00000/00018_lr,val,9,AFLT,{'AFLT': 100.0},56.0,0,100,12,1000,"I,II,III,AVR,AVL,AVF,V1,V2,V3,V4,V5,V6",True,static_noise
+ptbxl_000019,19,11116,ptbxl,ECG,records100/00000/00019_lr,train,7,NORM,"{'NORM': 100.0, 'SR': 0.0}",20.0,0,100,12,1000,"I,II,III,AVR,AVL,AVF,V1,V2,V3,V4,V5,V6",True,none
+ptbxl_000020,20,13619,ptbxl,ECG,records100/00000/00020_lr,val,9,AFLT,"{'AFLT': 100.0, 'ABQRS': 0.0}",56.0,0,100,12,1000,"I,II,III,AVR,AVL,AVF,V1,V2,V3,V4,V5,V6",True,none
+ptbxl_000021,21,17102,ptbxl,ECG,records100/00000/00021_lr,train,6,NORM,"{'NORM': 100.0, 'SR': 0.0}",19.0,1,100,12,1000,"I,II,III,AVR,AVL,AVF,V1,V2,V3,V4,V5,V6",True,none
+ptbxl_000022,22,20978,ptbxl,ECG,records100/00000/00022_lr,train,4,NDT,"{'NDT': 100.0, 'SR': 0.0}",17.0,1,100,12,1000,"I,II,III,AVR,AVL,AVF,V1,V2,V3,V4,V5,V6",True,none
+ptbxl_000023,23,13619,ptbxl,ECG,records100/00000/00023_lr,val,9,AFLT,{'AFLT': 100.0},56.0,0,100,12,1000,"I,II,III,AVR,AVL,AVF,V1,V2,V3,V4,V5,V6",True,none
+ptbxl_000024,24,9012,ptbxl,ECG,records100/00000/00024_lr,train,3,NORM,"{'NORM': 100.0, 'SR': 0.0}",41.0,0,100,12,1000,"I,II,III,AVR,AVL,AVF,V1,V2,V3,V4,V5,V6",True,none
+ptbxl_000025,25,10962,ptbxl,ECG,records100/00000/00025_lr,train,4,NORM,"{'NORM': 100.0, 'SR': 0.0}",19.0,1,100,12,1000,"I,II,III,AVR,AVL,AVF,V1,V2,V3,V4,V5,V6",True,"static_noise,baseline_drift"
+ptbxl_000026,26,13619,ptbxl,ECG,records100/00000/00026_lr,val,9,NST_,"{'NST_': 100.0, 'DIG': 100.0, 'SR': 0.0}",56.0,0,100,12,1000,"I,II,III,AVR,AVL,AVF,V1,V2,V3,V4,V5,V6",True,static_noise
+ptbxl_000027,27,10316,ptbxl,ECG,records100/00000/00027_lr,train,6,NORM,"{'NORM': 80.0, 'SR': 0.0}",56.0,0,100,12,1000,"I,II,III,AVR,AVL,AVF,V1,V2,V3,V4,V5,V6",True,none
+ptbxl_000028,28,13619,ptbxl,ECG,records100/00000/00028_lr,val,9,NST_,"{'NST_': 100.0, 'DIG': 100.0, 'SR': 0.0}",56.0,0,100,12,1000,"I,II,III,AVR,AVL,AVF,V1,V2,V3,V4,V5,V6",True,none
+ptbxl_000029,29,14340,ptbxl,ECG,records100/00000/00029_lr,train,4,NORM,"{'NORM': 100.0, 'SR': 0.0}",18.0,1,100,12,1000,"I,II,III,AVR,AVL,AVF,V1,V2,V3,V4,V5,V6",True,none
+ptbxl_000030,30,19053,ptbxl,ECG,records100/00000/00030_lr,val,9,LVH,"{'LVH': 100.0, 'SR': 0.0}",25.0,0,100,12,1000,"I,II,III,AVR,AVL,AVF,V1,V2,V3,V4,V5,V6",True,baseline_drift
+ptbxl_000031,31,15348,ptbxl,ECG,records100/00000/00031_lr,train,6,NORM,"{'NORM': 100.0, 'SR': 0.0}",24.0,1,100,12,1000,"I,II,III,AVR,AVL,AVF,V1,V2,V3,V4,V5,V6",True,none
+ptbxl_000032,32,11154,ptbxl,ECG,records100/00000/00032_lr,train,1,LPFB,"{'LPFB': 100.0, 'SR': 0.0}",18.0,0,100,12,1000,"I,II,III,AVR,AVL,AVF,V1,V2,V3,V4,V5,V6",True,baseline_drift
+ptbxl_000033,33,20527,ptbxl,ECG,records100/00000/00033_lr,train,3,NORM,"{'NORM': 100.0, 'SR': 0.0}",49.0,1,100,12,1000,"I,II,III,AVR,AVL,AVF,V1,V2,V3,V4,V5,V6",True,none
+ptbxl_000034,34,13619,ptbxl,ECG,records100/00000/00034_lr,val,9,AFLT,{'AFLT': 100.0},56.0,0,100,12,1000,"I,II,III,AVR,AVL,AVF,V1,V2,V3,V4,V5,V6",True,static_noise
+ptbxl_000035,35,15539,ptbxl,ECG,records100/00000/00035_lr,train,1,NORM,"{'NORM': 100.0, 'SR': 0.0}",20.0,0,100,12,1000,"I,II,III,AVR,AVL,AVF,V1,V2,V3,V4,V5,V6",True,none
+ptbxl_000036,36,8787,ptbxl,ECG,records100/00000/00036_lr,train,1,NORM,"{'NORM': 100.0, 'SR': 0.0}",55.0,0,100,12,1000,"I,II,III,AVR,AVL,AVF,V1,V2,V3,V4,V5,V6",True,static_noise
+ptbxl_000037,37,9123,ptbxl,ECG,records100/00000/00037_lr,train,1,NORM,"{'NORM': 80.0, 'SARRH': 0.0}",25.0,1,100,12,1000,"I,II,III,AVR,AVL,AVF,V1,V2,V3,V4,V5,V6",True,none
+ptbxl_000038,38,17076,ptbxl,ECG,records100/00000/00038_lr,test,10,NORM,"{'NORM': 100.0, 'SR': 0.0}",40.0,0,100,12,1000,"I,II,III,AVR,AVL,AVF,V1,V2,V3,V4,V5,V6",True,"static_noise,burst_noise"
+ptbxl_000039,39,13619,ptbxl,ECG,records100/00000/00039_lr,val,9,LNGQT,"{'IMI': 15.0, 'LNGQT': 100.0, 'NST_': 100.0, 'DIG': 100.0, 'ABQRS': 0.0, 'SR': 0.0}",56.0,0,100,12,1000,"I,II,III,AVR,AVL,AVF,V1,V2,V3,V4,V5,V6",True,none
+ptbxl_000040,40,19501,ptbxl,ECG,records100/00000/00040_lr,test,10,NORM,"{'NORM': 80.0, 'SR': 0.0}",60.0,0,100,12,1000,"I,II,III,AVR,AVL,AVF,V1,V2,V3,V4,V5,V6",True,none
+ptbxl_000041,41,8420,ptbxl,ECG,records100/00000/00041_lr,val,9,LAFB,"{'LAFB': 100.0, 'SR': 0.0}",42.0,0,100,12,1000,"I,II,III,AVR,AVL,AVF,V1,V2,V3,V4,V5,V6",True,none
+ptbxl_000042,42,8039,ptbxl,ECG,records100/00000/00042_lr,train,6,NORM,"{'NORM': 100.0, 'SR': 0.0}",28.0,1,100,12,1000,"I,II,III,AVR,AVL,AVF,V1,V2,V3,V4,V5,V6",True,none
+ptbxl_000043,43,11315,ptbxl,ECG,records100/00000/00043_lr,train,8,NORM,"{'NORM': 100.0, 'SR': 0.0}",25.0,1,100,12,1000,"I,II,III,AVR,AVL,AVF,V1,V2,V3,V4,V5,V6",True,none
+ptbxl_000044,44,19571,ptbxl,ECG,records100/00000/00044_lr,train,4,NORM,"{'NORM': 100.0, 'SR': 0.0}",45.0,1,100,12,1000,"I,II,III,AVR,AVL,AVF,V1,V2,V3,V4,V5,V6",True,none
+ptbxl_000045,45,18794,ptbxl,ECG,records100/00000/00045_lr,train,1,IRBBB,"{'IRBBB': 100.0, 'RAO/RAE': 50.0, 'RVH': 35.0, 'SR': 0.0}",51.0,0,100,12,1000,"I,II,III,AVR,AVL,AVF,V1,V2,V3,V4,V5,V6",True,static_noise
+ptbxl_000046,46,13180,ptbxl,ECG,records100/00000/00046_lr,train,2,NORM,"{'NORM': 100.0, 'SR': 0.0}",40.0,0,100,12,1000,"I,II,III,AVR,AVL,AVF,V1,V2,V3,V4,V5,V6",True,none
+ptbxl_000047,47,8295,ptbxl,ECG,records100/00000/00047_lr,val,9,NORM,"{'NORM': 100.0, 'SR': 0.0}",41.0,0,100,12,1000,"I,II,III,AVR,AVL,AVF,V1,V2,V3,V4,V5,V6",True,static_noise
+ptbxl_000048,48,13672,ptbxl,ECG,records100/00000/00048_lr,val,9,NDT,"{'NDT': 100.0, 'SR': 0.0}",23.0,1,100,12,1000,"I,II,III,AVR,AVL,AVF,V1,V2,V3,V4,V5,V6",True,"static_noise,baseline_drift"
+ptbxl_000049,49,13958,ptbxl,ECG,records100/00000/00049_lr,val,9,IVCD,"{'IVCD': 100.0, 'SR': 0.0}",23.0,0,100,12,1000,"I,II,III,AVR,AVL,AVF,V1,V2,V3,V4,V5,V6",True,"static_noise,baseline_drift"
+ptbxl_000050,50,16961,ptbxl,ECG,records100/00000/00050_lr,train,7,IVCD,"{'LMI': 15.0, 'IVCD': 100.0, 'SR': 0.0}",59.0,1,100,12,1000,"I,II,III,AVR,AVL,AVF,V1,V2,V3,V4,V5,V6",True,baseline_drift
+ptbxl_000051,51,16750,ptbxl,ECG,records100/00000/00051_lr,val,9,NORM,"{'NORM': 100.0, 'SR': 0.0}",37.0,1,100,12,1000,"I,II,III,AVR,AVL,AVF,V1,V2,V3,V4,V5,V6",True,static_noise
+ptbxl_000052,52,18153,ptbxl,ECG,records100/00000/00052_lr,train,1,IRBBB,"{'IRBBB': 100.0, 'SR': 0.0}",35.0,0,100,12,1000,"I,II,III,AVR,AVL,AVF,V1,V2,V3,V4,V5,V6",True,none
+ptbxl_000057,57,16063,ptbxl,ECG,records100/00000/00057_lr,test,10,NORM,"{'NORM': 100.0, 'SR': 0.0}",26.0,0,100,12,1000,"I,II,III,AVR,AVL,AVF,V1,V2,V3,V4,V5,V6",True,none
+ptbxl_000059,59,19475,ptbxl,ECG,records100/00000/00059_lr,test,10,NORM,"{'NORM': 100.0, 'SR': 0.0}",54.0,0,100,12,1000,"I,II,III,AVR,AVL,AVF,V1,V2,V3,V4,V5,V6",True,"static_noise,baseline_drift"
+ptbxl_000062,62,21273,ptbxl,ECG,records100/00000/00062_lr,val,9,NORM,"{'NORM': 100.0, 'ABQRS': 0.0, 'SR': 0.0}",44.0,1,100,12,1000,"I,II,III,AVR,AVL,AVF,V1,V2,V3,V4,V5,V6",True,none
+ptbxl_000063,63,15265,ptbxl,ECG,records100/00000/00063_lr,test,10,ASMI,"{'ASMI': 15.0, 'ABQRS': 0.0, 'SR': 0.0}",30.0,0,100,12,1000,"I,II,III,AVR,AVL,AVF,V1,V2,V3,V4,V5,V6",True,static_noise
+ptbxl_000065,65,19170,ptbxl,ECG,records100/00000/00065_lr,test,10,IRBBB,"{'IRBBB': 100.0, 'SR': 0.0}",62.0,0,100,12,1000,"I,II,III,AVR,AVL,AVF,V1,V2,V3,V4,V5,V6",True,none
+ptbxl_000069,69,8339,ptbxl,ECG,records100/00000/00069_lr,val,9,NORM,"{'NORM': 100.0, 'SBRAD': 0.0}",20.0,1,100,12,1000,"I,II,III,AVR,AVL,AVF,V1,V2,V3,V4,V5,V6",True,baseline_drift
+ptbxl_000072,72,14060,ptbxl,ECG,records100/00000/00072_lr,val,9,NORM,"{'NORM': 100.0, 'ABQRS': 0.0, 'SR': 0.0}",40.0,1,100,12,1000,"I,II,III,AVR,AVL,AVF,V1,V2,V3,V4,V5,V6",True,"static_noise,baseline_drift"
+ptbxl_000075,75,18502,ptbxl,ECG,records100/00000/00075_lr,test,10,NORM,"{'NORM': 100.0, 'SR': 0.0}",31.0,0,100,12,1000,"I,II,III,AVR,AVL,AVF,V1,V2,V3,V4,V5,V6",True,static_noise
+ptbxl_000076,76,21214,ptbxl,ECG,records100/00000/00076_lr,test,10,NORM,"{'NORM': 80.0, 'SARRH': 0.0}",38.0,1,100,12,1000,"I,II,III,AVR,AVL,AVF,V1,V2,V3,V4,V5,V6",True,static_noise
+ptbxl_000079,79,17529,ptbxl,ECG,records100/00000/00079_lr,test,10,NORM,"{'NORM': 100.0, 'SR': 0.0}",47.0,0,100,12,1000,"I,II,III,AVR,AVL,AVF,V1,V2,V3,V4,V5,V6",True,none
+ptbxl_000091,91,8305,ptbxl,ECG,records100/00000/00091_lr,val,9,NORM,"{'NORM': 100.0, 'SR': 0.0}",46.0,1,100,12,1000,"I,II,III,AVR,AVL,AVF,V1,V2,V3,V4,V5,V6",True,static_noise
+ptbxl_000093,93,10029,ptbxl,ECG,records100/00000/00093_lr,test,10,NORM,"{'NORM': 100.0, 'SR': 0.0}",47.0,0,100,12,1000,"I,II,III,AVR,AVL,AVF,V1,V2,V3,V4,V5,V6",True,"static_noise,baseline_drift"
+ptbxl_000094,94,21731,ptbxl,ECG,records100/00000/00094_lr,val,9,NORM,"{'NORM': 100.0, 'SR': 0.0}",20.0,0,100,12,1000,"I,II,III,AVR,AVL,AVF,V1,V2,V3,V4,V5,V6",True,none
+ptbxl_000100,100,21404,ptbxl,ECG,records100/00000/00100_lr,test,10,NORM,"{'NORM': 80.0, 'SARRH': 0.0}",20.0,1,100,12,1000,"I,II,III,AVR,AVL,AVF,V1,V2,V3,V4,V5,V6",True,burst_noise
+ptbxl_000112,112,19832,ptbxl,ECG,records100/00000/00112_lr,test,10,NORM,"{'NORM': 80.0, 'SR': 0.0}",44.0,0,100,12,1000,"I,II,III,AVR,AVL,AVF,V1,V2,V3,V4,V5,V6",True,none
+ptbxl_000115,115,11591,ptbxl,ECG,records100/00000/00115_lr,test,10,NORM,"{'NORM': 100.0, 'SR': 0.0}",18.0,1,100,12,1000,"I,II,III,AVR,AVL,AVF,V1,V2,V3,V4,V5,V6",True,static_noise
+ptbxl_000116,116,19695,ptbxl,ECG,records100/00000/00116_lr,test,10,NDT,"{'NDT': 100.0, 'SR': 0.0}",49.0,1,100,12,1000,"I,II,III,AVR,AVL,AVF,V1,V2,V3,V4,V5,V6",True,static_noise
+ptbxl_000117,117,16747,ptbxl,ECG,records100/00000/00117_lr,test,10,NORM,"{'NORM': 100.0, 'SR': 0.0}",54.0,0,100,12,1000,"I,II,III,AVR,AVL,AVF,V1,V2,V3,V4,V5,V6",True,static_noise
+ptbxl_000119,119,16747,ptbxl,ECG,records100/00000/00119_lr,test,10,NORM,"{'NORM': 80.0, 'SR': 0.0}",54.0,0,100,12,1000,"I,II,III,AVR,AVL,AVF,V1,V2,V3,V4,V5,V6",True,"burst_noise,baseline_drift"
+ptbxl_000121,121,16747,ptbxl,ECG,records100/00000/00121_lr,test,10,NORM,"{'NORM': 100.0, 'SR': 0.0}",54.0,0,100,12,1000,"I,II,III,AVR,AVL,AVF,V1,V2,V3,V4,V5,V6",True,static_noise
+ptbxl_000122,122,19832,ptbxl,ECG,records100/00000/00122_lr,test,10,NORM,"{'NORM': 80.0, 'SARRH': 0.0}",44.0,0,100,12,1000,"I,II,III,AVR,AVL,AVF,V1,V2,V3,V4,V5,V6",True,none
+ptbxl_000127,127,11926,ptbxl,ECG,records100/00000/00127_lr,val,9,NDT,"{'NDT': 100.0, 'SR': 0.0}",22.0,1,100,12,1000,"I,II,III,AVR,AVL,AVF,V1,V2,V3,V4,V5,V6",True,"static_noise,baseline_drift"
+ptbxl_000128,128,17735,ptbxl,ECG,records100/00000/00128_lr,test,10,NDT,{'NDT': 100.0},33.0,0,100,12,1000,"I,II,III,AVR,AVL,AVF,V1,V2,V3,V4,V5,V6",True,"static_noise,baseline_drift"
+ptbxl_000129,129,16463,ptbxl,ECG,records100/00000/00129_lr,test,10,NORM,"{'NORM': 100.0, 'SR': 0.0}",41.0,0,100,12,1000,"I,II,III,AVR,AVL,AVF,V1,V2,V3,V4,V5,V6",True,none
+ptbxl_000132,132,16747,ptbxl,ECG,records100/00000/00132_lr,test,10,NORM,"{'NORM': 80.0, 'SR': 0.0}",54.0,0,100,12,1000,"I,II,III,AVR,AVL,AVF,V1,V2,V3,V4,V5,V6",True,none
+ptbxl_000134,134,10784,ptbxl,ECG,records100/00000/00134_lr,val,9,NDT,"{'NDT': 100.0, 'SR': 0.0}",68.0,0,100,12,1000,"I,II,III,AVR,AVL,AVF,V1,V2,V3,V4,V5,V6",True,none
+ptbxl_000144,144,16914,ptbxl,ECG,records100/00000/00144_lr,val,9,PACE,{'PACE': 100.0},81.0,0,100,12,1000,"I,II,III,AVR,AVL,AVF,V1,V2,V3,V4,V5,V6",True,none
+ptbxl_000151,151,12152,ptbxl,ECG,records100/00000/00151_lr,val,9,NORM,{'NORM': 100.0},18.0,0,100,12,1000,"I,II,III,AVR,AVL,AVF,V1,V2,V3,V4,V5,V6",True,none
+ptbxl_000152,152,9796,ptbxl,ECG,records100/00000/00152_lr,val,9,ISCIL,"{'LMI': 50.0, 'ISCIL': 100.0, 'AFIB': 0.0}",70.0,1,100,12,1000,"I,II,III,AVR,AVL,AVF,V1,V2,V3,V4,V5,V6",True,static_noise
+ptbxl_000153,153,20254,ptbxl,ECG,records100/00000/00153_lr,val,9,IMI,"{'IMI': 15.0, 'ABQRS': 0.0, 'SR': 0.0}",46.0,0,100,12,1000,"I,II,III,AVR,AVL,AVF,V1,V2,V3,V4,V5,V6",True,none
+ptbxl_000155,155,12640,ptbxl,ECG,records100/00000/00155_lr,val,9,ILMI,"{'ILMI': 35.0, 'ABQRS': 0.0, 'SR': 0.0}",68.0,0,100,12,1000,"I,II,III,AVR,AVL,AVF,V1,V2,V3,V4,V5,V6",True,none
+ptbxl_000157,157,8131,ptbxl,ECG,records100/00000/00157_lr,test,10,LAFB,"{'LAFB': 100.0, 'SR': 0.0}",74.0,1,100,12,1000,"I,II,III,AVR,AVL,AVF,V1,V2,V3,V4,V5,V6",True,none
+ptbxl_000160,160,13470,ptbxl,ECG,records100/00000/00160_lr,test,10,NST_,"{'NST_': 100.0, 'SR': 0.0}",68.0,1,100,12,1000,"I,II,III,AVR,AVL,AVF,V1,V2,V3,V4,V5,V6",True,none
+ptbxl_000162,162,9780,ptbxl,ECG,records100/00000/00162_lr,test,10,LAFB,"{'ASMI': 50.0, 'LAFB': 100.0, 'LVH': 50.0, 'ISC_': 100.0, 'SR': 0.0}",85.0,1,100,12,1000,"I,II,III,AVR,AVL,AVF,V1,V2,V3,V4,V5,V6",True,none
+ptbxl_000165,165,9277,ptbxl,ECG,records100/00000/00165_lr,val,9,NORM,"{'NORM': 100.0, 'SR': 0.0}",21.0,0,100,12,1000,"I,II,III,AVR,AVL,AVF,V1,V2,V3,V4,V5,V6",True,burst_noise
+ptbxl_000167,167,16774,ptbxl,ECG,records100/00000/00167_lr,test,10,ISCAL,"{'ISCAL': 100.0, 'SR': 0.0}",54.0,0,100,12,1000,"I,II,III,AVR,AVL,AVF,V1,V2,V3,V4,V5,V6",True,none
+ptbxl_000170,170,15691,ptbxl,ECG,records100/00000/00170_lr,val,9,NST_,"{'NST_': 100.0, 'PVC': 100.0, 'SR': 0.0}",77.0,1,100,12,1000,"I,II,III,AVR,AVL,AVF,V1,V2,V3,V4,V5,V6",True,static_noise
+ptbxl_000171,171,15591,ptbxl,ECG,records100/00000/00171_lr,val,9,ISCIL,"{'ISCIL': 100.0, 'SR': 0.0}",62.0,0,100,12,1000,"I,II,III,AVR,AVL,AVF,V1,V2,V3,V4,V5,V6",True,none
+ptbxl_000172,172,20766,ptbxl,ECG,records100/00000/00172_lr,test,10,CRBBB,"{'CRBBB': 100.0, 'LAFB': 100.0, 'SR': 0.0}",62.0,0,100,12,1000,"I,II,III,AVR,AVL,AVF,V1,V2,V3,V4,V5,V6",True,none
+ptbxl_000173,173,10676,ptbxl,ECG,records100/00000/00173_lr,val,9,LVH,"{'LVH': 100.0, 'ISC_': 100.0, 'SR': 0.0}",82.0,0,100,12,1000,"I,II,III,AVR,AVL,AVF,V1,V2,V3,V4,V5,V6",True,electrodes_problems
+ptbxl_000175,175,21114,ptbxl,ECG,records100/00000/00175_lr,test,10,IMI,"{'IMI': 15.0, 'ABQRS': 0.0, 'SR': 0.0}",64.0,0,100,12,1000,"I,II,III,AVR,AVL,AVF,V1,V2,V3,V4,V5,V6",True,baseline_drift
+ptbxl_000178,178,20606,ptbxl,ECG,records100/00000/00178_lr,val,9,NORM,"{'NORM': 100.0, 'SR': 0.0}",26.0,1,100,12,1000,"I,II,III,AVR,AVL,AVF,V1,V2,V3,V4,V5,V6",True,none
+ptbxl_000180,180,15592,ptbxl,ECG,records100/00000/00180_lr,test,10,CLBBB,"{'CLBBB': 100.0, 'SR': 0.0}",81.0,1,100,12,1000,"I,II,III,AVR,AVL,AVF,V1,V2,V3,V4,V5,V6",True,electrodes_problems
+ptbxl_000201,201,19208,ptbxl,ECG,records100/00000/00201_lr,test,10,NORM,"{'NORM': 100.0, 'SR': 0.0}",32.0,1,100,12,1000,"I,II,III,AVR,AVL,AVF,V1,V2,V3,V4,V5,V6",True,none
+ptbxl_000203,203,11070,ptbxl,ECG,records100/00000/00203_lr,test,10,NORM,"{'NORM': 100.0, 'SR': 0.0}",46.0,0,100,12,1000,"I,II,III,AVR,AVL,AVF,V1,V2,V3,V4,V5,V6",True,none
+ptbxl_000208,208,8309,ptbxl,ECG,records100/00000/00208_lr,test,10,NORM,"{'NORM': 100.0, 'SR': 0.0}",25.0,1,100,12,1000,"I,II,III,AVR,AVL,AVF,V1,V2,V3,V4,V5,V6",True,none
+ptbxl_000210,210,16062,ptbxl,ECG,records100/00000/00210_lr,test,10,IMI,"{'IMI': 80.0, 'SR': 0.0}",58.0,0,100,12,1000,"I,II,III,AVR,AVL,AVF,V1,V2,V3,V4,V5,V6",True,static_noise
+ptbxl_019949,19949,10838,ptbxl,ECG,records100/19000/19949_lr,train,1,PVC,"{'NORM': 50.0, 'PVC': 100.0, 'SARRH': 0.0}",64.0,0,100,12,1000,"I,II,III,AVR,AVL,AVF,V1,V2,V3,V4,V5,V6",False,none
