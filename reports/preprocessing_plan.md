@@ -44,12 +44,25 @@ PAMAP2 (9 subjects): 7 train, 1 val (S108), 1 test (S109).
 WISDM (51 subjects): 41 train, 5 val (1646–1650), 5 test (1641–1645).
 
 ### EEG
-| Output | Window | Overlap | Labels | Shape |
-|---|---|---|---|---|
-| Event-aligned | 4 seconds | None | T0/T1/T2 event code | [N, 64, 640] |
+| Output | Window | Overlap | Labels | Shape | Windows Generated |
+|---|---|---|---|---|---|
+| Event-aligned | 4 seconds | None | T0/T1/T2 event code | [N, 64, 640] | 8,254 total |
 
-Windows aligned to T1/T2 onset. T0 windows sampled at matched rate.
-Subject-level split: 87 train, 11 val, 11 test.
+**T0 sampling strategy:** T0 (rest) windows are included alongside T1 and T2
+imagery windows. Each T0 annotation is treated identically to T1/T2 —
+a fixed 4-second window is extracted at T0 onset. T0 naturally alternates
+with every imagery event in runs 4, 8, and 12, resulting in roughly twice
+as many rest windows as imagery windows (rest: 4,007, left_fist: 2,138,
+right_fist: 2,109). This class imbalance is documented and preserved in
+metadata for downstream handling.
+
+**Sampling rate note:** Three subjects (S088, S092, S100) had recordings at
+128Hz rather than the expected 160Hz. These were automatically resampled
+to 160Hz before preprocessing to ensure consistent output shape [N, 64, 640].
+This is documented in the processing logs.
+
+Subject-level split: train (7,357 windows, subjects 1-87), val (484,
+subjects 88-98), test (413, subjects 99-109).
 
 ### ECG
 | Output | Window | Overlap | Labels | Shape |
@@ -98,7 +111,7 @@ Fold 9 → validation. Fold 10 → test.
 |---|---|---|---|---|
 | PAMAP2 | 657MB | 13.8MB (npz) + 965KB (csv) | ~2 GB | No |
 | WISDM | 296MB | 87MB (npz) + 5.9MB (csv) | ~4 GB | No |
-| EEGMMIDB | ~500MB (runs 4/8/12 only) | TBC after processing | ~6 GB | Yes — process per subject |
+| EEGMMIDB | ~500MB (runs 4/8/12 only) | 1.2GB (npz) + 3.2MB (csv) | ~6 GB | Yes — process per subject |
 | PTB-XL | ~1.7GB (100 Hz) | TBC after processing | ~8 GB | Yes — process in batches |
 
 EEG and ECG preprocessing is performed subject-by-subject and batch-by-batch respectively to keep peak RAM within acceptable bounds on a standard research laptop.
