@@ -656,14 +656,13 @@ def run_har_pipeline(config: dict) -> None:
             continue
 
         # Assign splits per dataset
-        pamap2_mask = metadata["dataset"] == "pamap2"
-        wisdm_mask  = metadata["dataset"] == "wisdm"
-        metadata.loc[pamap2_mask] = assign_splits(
-            metadata[pamap2_mask], config, "pamap2"
+        pamap2_meta = assign_splits(
+            metadata[metadata["dataset"] == "pamap2"].copy(), config, "pamap2"
         )
-        metadata.loc[wisdm_mask] = assign_splits(
-            metadata[wisdm_mask], config, "wisdm"
+        wisdm_meta = assign_splits(
+            metadata[metadata["dataset"] == "wisdm"].copy(), config, "wisdm"
         )
+        metadata = pd.concat([pamap2_meta, wisdm_meta], ignore_index=True)
 
         save_har_outputs(signals, metadata, processed_dir, "combined", mode)
 
