@@ -73,6 +73,11 @@ Folds 1–8 → train (17,418), Fold 9 → val (2,183), Fold 10 → test (2,198)
 0 records skipped — all 21,799 records processed successfully.
 QC flags preserved in metadata for downstream filtering.
 
+Cross-validation: the 8 training folds (strat_fold 1-8) serve directly
+as pre-defined cross-validation folds — all records from the same patient
+are guaranteed to be in the same fold, preventing leakage.
+This is the split strategy recommended by the dataset authors.
+
 ---
 
 ## 4. Missing Values, Null Labels, and Signal Cleaning
