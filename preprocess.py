@@ -21,6 +21,8 @@ import yaml
 
 from src.har_preprocessing import run_har_pipeline
 from src.eeg_preprocessing import run_eeg_pipeline
+from src.ecg_preprocessing import run_ecg_pipeline
+
 
 # ── Logging setup ─────────────────────────────────────────────────────────────
 logging.basicConfig(
@@ -64,7 +66,9 @@ def main():
         logger.info("EEG preprocessing complete.")
 
     if args.ecg or run_all:
-        logger.info("ECG preprocessing — coming soon.")
+        logger.info("Starting ECG preprocessing...")
+        run_ecg_pipeline(config)
+        logger.info("ECG preprocessing complete.")
 
 
 if __name__ == "__main__":

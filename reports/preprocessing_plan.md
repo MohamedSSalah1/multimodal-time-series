@@ -29,7 +29,6 @@
 ## 3. Window Definitions, Overlap, and Split Strategy
 
 ### HAR
-### HAR
 | Output | Window | Overlap | Labels | Shape | Windows Generated |
 |---|---|---|---|---|---|
 | Pretraining | 10 seconds | 0% | None | [N, 6, 200] | 19,542 combined (2,721 PAMAP2 + 16,821 WISDM) |
@@ -65,13 +64,14 @@ Subject-level split: train (7,357 windows, subjects 1-87), val (484,
 subjects 88-98), test (413, subjects 99-109).
 
 ### ECG
-| Output | Window | Overlap | Labels | Shape |
-|---|---|---|---|---|
-| Full record | 10 seconds | None | SCP diagnostic codes | [N, 12, 1000] |
+| Output | Window | Overlap | Labels | Shape | Records |
+|---|---|---|---|---|---|
+| Full record | 10 seconds | None | SCP diagnostic codes | [N, 12, 1000] | 21,799 |
 
-Pre-defined patient-level folds used directly:
-Folds 1–8 → training (further split into 8-fold cross-validation).
-Fold 9 → validation. Fold 10 → test.
+Pre-defined patient-level folds used directly from strat_fold column.
+Folds 1–8 → train (17,418), Fold 9 → val (2,183), Fold 10 → test (2,198).
+0 records skipped — all 21,799 records processed successfully.
+QC flags preserved in metadata for downstream filtering.
 
 ---
 
@@ -112,7 +112,7 @@ Fold 9 → validation. Fold 10 → test.
 | PAMAP2 | 657MB | 13.8MB (npz) + 965KB (csv) | ~2 GB | No |
 | WISDM | 296MB | 87MB (npz) + 5.9MB (csv) | ~4 GB | No |
 | EEGMMIDB | ~500MB (runs 4/8/12 only) | 1.2GB (npz) + 3.2MB (csv) | ~6 GB | Yes — process per subject |
-| PTB-XL | ~1.7GB (100 Hz) | TBC after processing | ~8 GB | Yes — process in batches |
+| PTB-XL | ~1.7GB (100 Hz zip) | 928MB (npz) + 3.9MB (csv) | ~8 GB | No — processed record by record |
 
 EEG and ECG preprocessing is performed subject-by-subject and batch-by-batch respectively to keep peak RAM within acceptable bounds on a standard research laptop.
 
