@@ -323,7 +323,6 @@ ptbxl/
 ---
 
 ## Usage
-## Usage
 
 ### Step 1 — Clone and set up environment
 ```bash

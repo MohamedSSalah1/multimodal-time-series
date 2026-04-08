@@ -22,3 +22,4 @@ __pycache__/
 # Editors
 .vscode/
 .idea/
+nohup.out
