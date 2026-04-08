@@ -29,14 +29,19 @@
 ## 3. Window Definitions, Overlap, and Split Strategy
 
 ### HAR
-| Output | Window | Overlap | Labels | Shape |
-|---|---|---|---|---|
-| Pretraining | 10 seconds | 0% | None | [N, 6, 200] |
-| Supervised | 5 seconds | 50% | Majority vote | [N, 6, 100] |
+### HAR
+| Output | Window | Overlap | Labels | Shape | Windows Generated |
+|---|---|---|---|---|---|
+| Pretraining | 10 seconds | 0% | None | [N, 6, 200] | 19,542 combined (2,721 PAMAP2 + 16,821 WISDM) |
+| Supervised | 5 seconds | 50% | Majority vote | [N, 6, 100] | 30,499 combined (4,478 PAMAP2 + 26,021 WISDM) |
+
+Label assignment for supervised windows uses majority vote — the most frequent
+label among all samples within a window is assigned as the window label.
+This is robust to short label transitions at window boundaries.
 
 Subject-level train/val/test split applied after windowing to prevent leakage.
-PAMAP2 (9 subjects): 7 train, 1 val, 1 test.
-WISDM (51 subjects): 41 train, 5 val, 5 test.
+PAMAP2 (9 subjects): 7 train, 1 val (S108), 1 test (S109).
+WISDM (51 subjects): 41 train, 5 val (1646–1650), 5 test (1641–1645).
 
 ### EEG
 | Output | Window | Overlap | Labels | Shape |
@@ -64,6 +69,10 @@ Fold 9 → validation. Fold 10 → test.
 - **Activity ID 0:** explicitly discarded per dataset documentation — covers transient periods between activities
 - **Outlier clipping:** accelerometer clipped to ±16g; gyroscope clipped to ±2000°/s
 
+- **Edge case — S104/running:** Subject 104 had only 1 sample of running
+  after decimation — too few to process. Segment skipped and logged as a
+  warning. This is expected given the realistic nature of the dataset.
+
 ### WISDM
 - **Semicolon terminator:** stripped from each line during parsing
 - **Missing values:** no explicit NaN indicator — verified during parsing; any malformed rows dropped
@@ -85,12 +94,12 @@ Fold 9 → validation. Fold 10 → test.
 
 ## 5. Storage, RAM, and Compute Considerations
 
-| Dataset | Raw Size | Processed Estimate | Peak RAM | Chunking Needed |
+| Dataset | Raw Size | Processed Size | Peak RAM | Chunking Needed |
 |---|---|---|---|---|
-| PAMAP2 | ~656 MB | ~50 MB | ~2 GB | No |
-| WISDM | ~780 MB | ~200 MB | ~4 GB | No |
-| EEGMMIDB | ~500 MB (runs 4/8/12 only) | ~800 MB | ~6 GB | Yes — process per subject |
-| PTB-XL | ~500 MB (100 Hz) | ~450 MB | ~8 GB | Yes — process in batches |
+| PAMAP2 | 657MB | 13.8MB (npz) + 965KB (csv) | ~2 GB | No |
+| WISDM | 296MB | 87MB (npz) + 5.9MB (csv) | ~4 GB | No |
+| EEGMMIDB | ~500MB (runs 4/8/12 only) | TBC after processing | ~6 GB | Yes — process per subject |
+| PTB-XL | ~1.7GB (100 Hz) | TBC after processing | ~8 GB | Yes — process in batches |
 
 EEG and ECG preprocessing is performed subject-by-subject and batch-by-batch respectively to keep peak RAM within acceptable bounds on a standard research laptop.
 
