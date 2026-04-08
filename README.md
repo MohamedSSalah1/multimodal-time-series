@@ -324,6 +324,8 @@ ptbxl/
 
 ## Usage
 
+## Usage
+
 ### Step 1 — Clone and set up environment
 ```bash
 git clone https://github.com/MohamedSSalah1/multimodal-time-series.git
@@ -333,31 +335,59 @@ conda activate biomedical_pipeline
 ```
 
 ### Step 2 — Download all datasets
-The script activates the conda environment automatically and downloads
-all four datasets with integrity checks. EEGMMIDB (~2-3 hrs) and
-PTB-XL (~5 hrs) are large — run with caffeinate and nohup to keep
-the process running independently of your terminal session:
+Downloads all four datasets with integrity checks and checksum verification.
+EEGMMIDB (~1.5 hrs) and PTB-XL (~3 hrs) are large — run with caffeinate
+and nohup to keep the process running independently of your terminal:
 ```bash
 caffeinate -i nohup bash setup_data.sh &
 ```
 
-Monitor progress in real time:
+Monitor progress:
 ```bash
 tail -f logs/setup_*.log
 ```
-
-caffeinate prevents your Mac from sleeping during the download.
-nohup keeps the process running even if the terminal closes.
-The conda environment is activated automatically inside the script.
 
 ### Step 3 — Run preprocessing
 ```bash
 python preprocess.py
 ```
 
+Run individual modalities:
+```bash
+python preprocess.py --har
+python preprocess.py --eeg
+python preprocess.py --ecg
+```
+
 ### Step 4 — Run validation
 ```bash
 python validate_outputs.py
+```
+
+Generates:
+- `reports/validation_report.md`
+- `reports/resource_estimate.md`
+- `data/manifest_outputs.json`
+
+### Step 5 — Generate submission sample pack
+```bash
+python generate_submission_sample.py
+```
+
+Generates 100 stratified windows per dataset in `submission_sample/`.
+
+### Inspecting the sample pack
+Sample files are `.npz` binary arrays — inspect them with Python:
+```python
+import numpy as np
+import pandas as pd
+
+d = np.load('submission_sample/har/pamap2_supervised_sample.npz')
+print('Shape:', d['signals'].shape)   # (100, 6, 100)
+print('Dtype:', d['signals'].dtype)   # float32
+
+m = pd.read_csv('submission_sample/har/pamap2_supervised_sample_metadata.csv')
+print(m.head())
 ```
 
 ---
