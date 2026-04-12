@@ -103,6 +103,55 @@ The representative processed sample pack (100 windows per dataset) is available 
 
 ---
 
+## Troubleshooting
+
+### PAMAP2 and WISDM — Nested Zip Files
+Both UCI datasets use a nested zip structure that is not documented on their download pages:
+
+```
+pamap2.zip
+└── PAMAP2_Dataset.zip    ← inner zip
+    └── PAMAP2_Dataset/
+        ├── Protocol/
+        └── Optional/
+
+wisdm.zip
+└── wisdm-dataset.zip     ← inner zip
+    └── wisdm-dataset/
+        └── raw/
+```
+
+`setup_data.sh` handles this automatically by extracting both the outer and inner zips. If you encounter extraction errors, verify both zips are present:
+
+```bash
+ls data/raw/pamap2/
+ls data/raw/wisdm/
+```
+
+### EEGMMIDB — Mixed Sampling Rates
+Three subjects (S088, S092, S100) were recorded at 128 Hz instead of the expected 160 Hz. This is not documented on the PhysioNet page. `src/eeg_preprocessing.py` detects and automatically resamples these to 160 Hz before preprocessing. This is logged during processing:
+
+```
+S088/R04: resampling 128.0Hz → 160Hz
+```
+
+### EEGMMIDB — Rate Limiting
+PhysioNet may rate limit downloads after many consecutive requests. If the download stalls mid-way through subjects, simply re-run `setup_data.sh` — it skips already downloaded files and resumes from where it left off.
+
+### PTB-XL — Download URL Redirect
+The PTB-XL zip redirects from the static URL to `https://physionet.org/content/ptb-xl/get-zip/1.0.3/`. The script uses the correct URL directly. If you encounter download issues, verify your connection can reach PhysioNet.
+
+### General — Resuming Interrupted Downloads
+All downloads are safe to re-run — `setup_data.sh` skips completed downloads and resumes incomplete ones. For large datasets check progress with:
+
+```bash
+# Check download progress
+ls -lh data/raw/ptbxl/ptbxl.zip
+find data/raw/eegmmidb -name "*.edf" | wc -l
+```
+
+---
+
 ## Dataset Notes
 
 The following findings were gathered by exploring each dataset before writing any preprocessing code. These observations directly informed the preprocessing plan and configuration choices.
