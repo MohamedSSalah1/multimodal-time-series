@@ -99,7 +99,7 @@ Each data folder contains a `.gitkeep` file — a tiny empty placeholder that al
 ### Where to find the processed sample pack
 
 The representative processed sample pack (100 windows per dataset) is available at:
-> link — to be added upon submission
+> [Submission sample pack — processed windows for all datasets](https://www.dropbox.com/scl/fo/7wr3ffa60st257tf2vqck/ANS5bhMRmcAc0iAgfVucv94?rlkey=0gt5a6ptqnjh2qpc99g4h37wc&st=f2uk8bor&dl=0) 
 
 ---
 
