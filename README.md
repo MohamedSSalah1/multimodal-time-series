@@ -496,8 +496,7 @@ An approximately 80/10/10 subject-level split. The slight imbalance in window co
 | `baseline_drift` | Low-frequency baseline wander present |
 | `electrodes_problems` | Electrode contact issues reported |
 
-If none of these issues are present the flag is set to `none`. Downstream models can use these flags to filter or weight records during training.
-```
+If none of these issues are present the flag is set to none. Downstream models can use these flags to filter or weight records during training.
 
 ---
 
