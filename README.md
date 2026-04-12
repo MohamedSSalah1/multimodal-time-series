@@ -437,6 +437,7 @@ Generates 100 stratified windows per dataset in `submission_sample/`.
 
 ### Inspecting the sample pack
 Sample files are `.npz` binary arrays — inspect them with Python:
+
 ```python
 import numpy as np
 import pandas as pd
@@ -447,6 +448,55 @@ print('Dtype:', d['signals'].dtype)   # float32
 
 m = pd.read_csv('submission_sample/har/pamap2_supervised_sample_metadata.csv')
 print(m.head())
+```
+
+---
+
+## Understanding the Submission Samples
+
+### Why most sample windows are labelled train
+
+The submission samples are stratified by label/event (not by split), meaning 100 windows are selected proportionally across activity classes or event types. Since the underlying datasets have far more train windows than val or test — by design, as train sets are always larger — most sampled windows will naturally be from the train split. This is expected and does not indicate a problem with the split strategy.
+
+For reference, the full split distributions are:
+
+| Modality | Train | Val | Test |
+|---|---|---|---|
+| HAR combined supervised | 24,391 | 3,314 | 2,794 |
+| EEG | 7,357 | 484 | 413 |
+| ECG | 17,418 | 2,183 | 2,198 |
+
+### HAR split strategy
+Splits are assigned at the subject level — all windows from a given subject appear in exactly one split. This prevents data leakage where a model could learn individual movement patterns rather than generalisable activity signatures.
+
+- **PAMAP2:** 7 train subjects, 1 val (S108), 1 test (S109) — the small subject count (9) means a single subject per split is the only practical option
+- **WISDM:** 41 train subjects, 5 val (IDs 1646–1650), 5 test (IDs 1641–1645) — approximately 80/10/10 subject-level split
+
+### EEG split strategy
+Splits are assigned at the subject level — all runs from a given subject appear in exactly one split.
+
+- Subjects 1–87: train
+- Subjects 88–98: val
+- Subjects 99–109: test
+
+An approximately 80/10/10 subject-level split. The slight imbalance in window counts between val and test reflects natural variation in the number of clean windows extracted per subject after artefact rejection.
+
+### ECG — split strategy, validated_by_human, and qc_flags
+
+**Split strategy:** PTB-XL provides 10 pre-defined stratified folds in the `strat_fold` column where all records from the same patient are guaranteed to be in the same fold. Folds 1–8 are used for training, fold 9 for validation, and fold 10 for test. This is the split recommended by the dataset authors. Folds 9 and 10 contain the highest proportion of human-validated labels, making them the most reliable for evaluation.
+
+**validated_by_human:** A boolean flag from the original PTB-XL metadata indicating whether a cardiologist manually reviewed and confirmed the ECG annotations for that record. Records with `validated_by_human = True` have higher label reliability. Folds 9 and 10 (val and test) were specifically chosen because they contain the most human-validated records.
+
+**qc_flags:** Generated during preprocessing from PTB-XL's signal quality metadata columns. Each record is checked for four known signal quality issues:
+
+| Flag | Meaning |
+|---|---|
+| `static_noise` | Persistent background noise detected in one or more leads |
+| `burst_noise` | Intermittent noise bursts in the signal |
+| `baseline_drift` | Low-frequency baseline wander present |
+| `electrodes_problems` | Electrode contact issues reported |
+
+If none of these issues are present the flag is set to `none`. Downstream models can use these flags to filter or weight records during training.
 ```
 
 ---
