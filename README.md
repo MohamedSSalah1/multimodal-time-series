@@ -39,14 +39,23 @@ conda activate biomedical_pipeline
 ---
 
 ## Project Structure
+
 ```
 multimodal-time-series/
 ├── setup_data.sh              # Shell wrapper — folder setup and dataset downloads
 ├── preprocess.py              # Main preprocessing entrypoint
 ├── validate_outputs.py        # Validation and report generation
+├── generate_submission_sample.py  # Generates 100-window sample packs
+├── src/
+│   ├── __init__.py
+│   ├── har_preprocessing.py   # HAR pipeline — PAMAP2 and WISDM
+│   ├── eeg_preprocessing.py   # EEG pipeline — EEGMMIDB
+│   └── ecg_preprocessing.py   # ECG pipeline — PTB-XL
 ├── configs/
 │   └── pipeline.yaml          # All pipeline parameters — sampling rates, window sizes, channel schemas
 ├── data/
+│   ├── manifest_downloads.json  # Machine-readable download manifest
+│   ├── manifest_outputs.json    # Machine-readable output manifest
 │   ├── raw/                   # Downloaded datasets (gitignored — see Data section below)
 │   │   ├── pamap2/
 │   │   ├── wisdm/
@@ -56,11 +65,14 @@ multimodal-time-series/
 │   │   ├── har/
 │   │   ├── eeg/
 │   │   └── ecg/
-│   └── processed/             # Final .npy arrays and metadata CSVs
+│   └── processed/             # Final .npz arrays and metadata CSVs
 │       ├── har/
 │       ├── eeg/
 │       └── ecg/
-├── reports/                   # Validation report, resource estimate, preprocessing plan
+├── reports/
+│   ├── preprocessing_plan.md  # One-page preprocessing plan
+│   ├── validation_report.md   # Auto-generated validation report
+│   └── resource_estimate.md   # Storage, RAM, and runtime estimates
 ├── submission_sample/         # 100 representative windows per dataset
 │   ├── har/
 │   ├── eeg/
@@ -142,25 +154,25 @@ PAMAP2_Dataset/
 
 | ID | Activity | Kept in unified schema |
 |---|---|---|
-| 0 | Transient | ❌ Discarded |
-| 1 | Lying | ✅ |
-| 2 | Sitting | ✅ |
-| 3 | Standing | ✅ |
-| 4 | Walking | ✅ |
-| 5 | Running | ✅ |
-| 6 | Cycling | ✅ |
-| 7 | Nordic walking | ✅ |
-| 9 | Watching TV | ✅ |
-| 10 | Computer work | ✅ |
-| 11 | Car driving | ✅ |
-| 12 | Ascending stairs | ✅ |
-| 13 | Descending stairs | ✅ |
-| 16 | Vacuum cleaning | ✅ |
-| 17 | Ironing | ✅ |
-| 18 | Folding laundry | ✅ |
-| 19 | House cleaning | ✅ |
-| 20 | Playing soccer | ✅ |
-| 24 | Rope jumping | ✅ |
+| 0 | Transient | Discarded |
+| 1 | Lying | Yes |
+| 2 | Sitting | Yes |
+| 3 | Standing | Yes |
+| 4 | Walking | Yes |
+| 5 | Running | Yes |
+| 6 | Cycling | Yes |
+| 7 | Nordic walking | Yes |
+| 9 | Watching TV | Yes |
+| 10 | Computer work | Yes |
+| 11 | Car driving | Yes |
+| 12 | Ascending stairs | Yes |
+| 13 | Descending stairs | Yes |
+| 16 | Vacuum cleaning | Yes |
+| 17 | Ironing | Yes |
+| 18 | Folding laundry | Yes |
+| 19 | House cleaning | Yes |
+| 20 | Playing soccer | Yes |
+| 24 | Rope jumping | Yes |
 
 ---
 
@@ -198,24 +210,24 @@ wisdm-dataset/
 
 | WISDM Code | WISDM Activity | PAMAP2 Equivalent | Unified Label | Kept |
 |---|---|---|---|---|
-| A | Walking | Walking (4) | walking | ✅ |
-| B | Jogging | Running (5) | running | ✅ |
-| C | Stairs | Stairs (12/13) | stairs | ✅ |
-| D | Sitting | Sitting (2) | sitting | ✅ |
-| E | Standing | Standing (3) | standing | ✅ |
-| F | Typing | Computer work (10) | computer_work | ✅ |
-| G | Brushing Teeth | No equivalent | brushing_teeth | ✅ pretraining only |
-| H | Eating Soup | No equivalent | eating_soup | ✅ pretraining only |
-| I | Eating Chips | No equivalent | eating_chips | ✅ pretraining only |
-| J | Eating Pasta | No equivalent | eating_pasta | ✅ pretraining only |
-| K | Drinking | No equivalent | drinking | ✅ pretraining only |
-| L | Eating Sandwich | No equivalent | eating_sandwich | ✅ pretraining only |
-| M | Kicking | Playing soccer (20) | kicking | ✅ pretraining only |
-| O | Playing Catch | No equivalent | playing_catch | ✅ pretraining only |
-| P | Dribbling | Playing soccer (20) | dribbling | ✅ pretraining only |
-| Q | Writing | No equivalent | writing | ✅ pretraining only |
-| R | Clapping | No equivalent | clapping | ✅ pretraining only |
-| S | Folding Clothes | Folding laundry (18) | folding_laundry | ✅ |
+| A | Walking | Walking (4) | walking | Yes |
+| B | Jogging | Running (5) | running | Yes |
+| C | Stairs | Stairs (12/13) | stairs | Yes |
+| D | Sitting | Sitting (2) | sitting | Yes |
+| E | Standing | Standing (3) | standing | Yes |
+| F | Typing | Computer work (10) | computer_work | Yes |
+| G | Brushing Teeth | No equivalent | brushing_teeth | Yes — pretraining only |
+| H | Eating Soup | No equivalent | eating_soup | Yes — pretraining only |
+| I | Eating Chips | No equivalent | eating_chips | Yes — pretraining only |
+| J | Eating Pasta | No equivalent | eating_pasta | Yes — pretraining only |
+| K | Drinking | No equivalent | drinking | Yes — pretraining only |
+| L | Eating Sandwich | No equivalent | eating_sandwich | Yes — pretraining only |
+| M | Kicking | Playing soccer (20) | kicking | Yes — pretraining only |
+| O | Playing Catch | No equivalent | playing_catch | Yes — pretraining only |
+| P | Dribbling | Playing soccer (20) | dribbling | Yes — pretraining only |
+| Q | Writing | No equivalent | writing | Yes — pretraining only |
+| R | Clapping | No equivalent | clapping | Yes — pretraining only |
+| S | Folding Clothes | Folding laundry (18) | folding_laundry | Yes |
 
 **Label strategy:**
 - **Pretraining output:** all activities included (no labels used)
