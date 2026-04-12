@@ -1,0 +1,296 @@
+[
+  {
+    "file": "data/processed/.gitkeep",
+    "size_mb": 0.0
+  },
+  {
+    "file": "data/processed/ecg/.gitkeep",
+    "size_mb": 0.0
+  },
+  {
+    "file": "data/processed/ecg/ptbxl.npz",
+    "size_mb": 927.78,
+    "type": "signals",
+    "shape": [
+      21799,
+      12,
+      1000
+    ],
+    "dtype": "float32",
+    "n_windows": 21799
+  },
+  {
+    "file": "data/processed/ecg/ptbxl_metadata.csv",
+    "size_mb": 3.86,
+    "type": "metadata",
+    "n_rows": 21799,
+    "columns": [
+      "sample_id",
+      "ecg_id",
+      "patient_id",
+      "dataset_name",
+      "modality",
+      "source_file",
+      "split",
+      "strat_fold",
+      "primary_label",
+      "scp_codes",
+      "age",
+      "sex",
+      "sampling_rate_hz",
+      "n_channels",
+      "n_samples",
+      "lead_names",
+      "validated_by_human",
+      "qc_flags"
+    ]
+  },
+  {
+    "file": "data/processed/har/.gitkeep",
+    "size_mb": 0.0
+  },
+  {
+    "file": "data/processed/har/combined_pretrain.npz",
+    "size_mb": 71.56,
+    "type": "signals",
+    "shape": [
+      19542,
+      6,
+      200
+    ],
+    "dtype": "float32",
+    "n_windows": 19542
+  },
+  {
+    "file": "data/processed/har/combined_pretrain_metadata.csv",
+    "size_mb": 2.79,
+    "type": "metadata",
+    "n_rows": 19542,
+    "columns": [
+      "subject_id",
+      "dataset",
+      "source_file",
+      "label",
+      "window_start",
+      "window_end",
+      "n_samples",
+      "n_channels",
+      "sampling_rate",
+      "channel_schema",
+      "split",
+      "sample_id",
+      "modality",
+      "dataset_name"
+    ]
+  },
+  {
+    "file": "data/processed/har/combined_supervised.npz",
+    "size_mb": 28.57,
+    "type": "signals",
+    "shape": [
+      30499,
+      6,
+      100
+    ],
+    "dtype": "float32",
+    "n_windows": 30499
+  },
+  {
+    "file": "data/processed/har/combined_supervised_metadata.csv",
+    "size_mb": 4.38,
+    "type": "metadata",
+    "n_rows": 30499,
+    "columns": [
+      "subject_id",
+      "dataset",
+      "source_file",
+      "label",
+      "window_start",
+      "window_end",
+      "n_samples",
+      "n_channels",
+      "sampling_rate",
+      "channel_schema",
+      "split",
+      "sample_id",
+      "modality",
+      "dataset_name"
+    ]
+  },
+  {
+    "file": "data/processed/har/pamap2_pretrain.npz",
+    "size_mb": 9.67,
+    "type": "signals",
+    "shape": [
+      2721,
+      6,
+      200
+    ],
+    "dtype": "float32",
+    "n_windows": 2721
+  },
+  {
+    "file": "data/processed/har/pamap2_pretrain_metadata.csv",
+    "size_mb": 0.35,
+    "type": "metadata",
+    "n_rows": 2721,
+    "columns": [
+      "subject_id",
+      "dataset",
+      "source_file",
+      "label",
+      "window_start",
+      "window_end",
+      "n_samples",
+      "n_channels",
+      "sampling_rate",
+      "channel_schema",
+      "split",
+      "sample_id",
+      "modality",
+      "dataset_name"
+    ]
+  },
+  {
+    "file": "data/processed/har/pamap2_supervised.npz",
+    "size_mb": 4.07,
+    "type": "signals",
+    "shape": [
+      4478,
+      6,
+      100
+    ],
+    "dtype": "float32",
+    "n_windows": 4478
+  },
+  {
+    "file": "data/processed/har/pamap2_supervised_metadata.csv",
+    "size_mb": 0.59,
+    "type": "metadata",
+    "n_rows": 4478,
+    "columns": [
+      "subject_id",
+      "dataset",
+      "source_file",
+      "label",
+      "window_start",
+      "window_end",
+      "n_samples",
+      "n_channels",
+      "sampling_rate",
+      "channel_schema",
+      "split",
+      "sample_id",
+      "modality",
+      "dataset_name"
+    ]
+  },
+  {
+    "file": "data/processed/har/wisdm_pretrain.npz",
+    "size_mb": 61.89,
+    "type": "signals",
+    "shape": [
+      16821,
+      6,
+      200
+    ],
+    "dtype": "float32",
+    "n_windows": 16821
+  },
+  {
+    "file": "data/processed/har/wisdm_pretrain_metadata.csv",
+    "size_mb": 2.33,
+    "type": "metadata",
+    "n_rows": 16821,
+    "columns": [
+      "subject_id",
+      "dataset",
+      "source_file",
+      "label",
+      "window_start",
+      "window_end",
+      "n_samples",
+      "n_channels",
+      "sampling_rate",
+      "channel_schema",
+      "split",
+      "sample_id",
+      "modality",
+      "dataset_name"
+    ]
+  },
+  {
+    "file": "data/processed/har/wisdm_supervised.npz",
+    "size_mb": 24.5,
+    "type": "signals",
+    "shape": [
+      26021,
+      6,
+      100
+    ],
+    "dtype": "float32",
+    "n_windows": 26021
+  },
+  {
+    "file": "data/processed/har/wisdm_supervised_metadata.csv",
+    "size_mb": 3.62,
+    "type": "metadata",
+    "n_rows": 26021,
+    "columns": [
+      "subject_id",
+      "dataset",
+      "source_file",
+      "label",
+      "window_start",
+      "window_end",
+      "n_samples",
+      "n_channels",
+      "sampling_rate",
+      "channel_schema",
+      "split",
+      "sample_id",
+      "modality",
+      "dataset_name"
+    ]
+  },
+  {
+    "file": "data/processed/eeg/.gitkeep",
+    "size_mb": 0.0
+  },
+  {
+    "file": "data/processed/eeg/eegmmidb.npz",
+    "size_mb": 1199.18,
+    "type": "signals",
+    "shape": [
+      8254,
+      64,
+      640
+    ],
+    "dtype": "float32",
+    "n_windows": 8254
+  },
+  {
+    "file": "data/processed/eeg/eegmmidb_metadata.csv",
+    "size_mb": 3.24,
+    "type": "metadata",
+    "n_rows": 8254,
+    "columns": [
+      "subject_id",
+      "run_id",
+      "event_code",
+      "event_label",
+      "onset_sec",
+      "onset_sample",
+      "duration_sec",
+      "n_channels",
+      "n_samples",
+      "sampling_rate",
+      "channel_schema",
+      "dataset",
+      "source_file",
+      "modality",
+      "split",
+      "sample_id"
+    ]
+  }
+]

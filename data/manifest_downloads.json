@@ -1,0 +1,80 @@
+{
+  "generated_at": "2026-04-07T20:44:06.678620+00:00",
+  "project": "Multimodal Biosignal Preprocessing Pipeline",
+  "datasets": [
+    {
+      "name": "PAMAP2",
+      "modality": "HAR",
+      "source_url": "https://archive.ics.uci.edu/static/public/231/pamap2+physical+activity+monitoring.zip",
+      "landing_page": "https://archive.ics.uci.edu/dataset/231/pamap2+physical+activity+monitoring",
+      "local_path": "data/raw/pamap2",
+      "version": "UCI ML Repository \u2014 Dataset #231",
+      "native_sampling_rate_hz": 100,
+      "target_sampling_rate_hz": 20,
+      "n_subjects": 9,
+      "checksum_method": "SHA256 \u2014 recorded on first download, verified on subsequent runs",
+      "file_count": 14,
+      "size_mb": 2965.16,
+      "status": "downloaded",
+      "downloaded_at": "2026-04-07T20:44:06.678620+00:00"
+    },
+    {
+      "name": "WISDM",
+      "modality": "HAR",
+      "source_url": "https://archive.ics.uci.edu/static/public/507/wisdm+smartphone+and+smartwatch+activity+and+biometrics+dataset.zip",
+      "landing_page": "https://archive.ics.uci.edu/dataset/507/wisdm+smartphone+and+smartwatch+activity+and+biometrics+dataset",
+      "local_path": "data/raw/wisdm",
+      "version": "UCI ML Repository \u2014 Dataset #507",
+      "native_sampling_rate_hz": 20,
+      "target_sampling_rate_hz": 20,
+      "n_subjects": 51,
+      "checksum_method": "SHA256 \u2014 recorded on first download, verified on subsequent runs",
+      "file_count": 206,
+      "size_mb": 1486.46,
+      "status": "downloaded",
+      "downloaded_at": "2026-04-07T20:44:06.678620+00:00"
+    },
+    {
+      "name": "EEGMMIDB",
+      "modality": "EEG",
+      "source_url": "https://physionet.org/files/eegmmidb/1.0.0",
+      "landing_page": "https://physionet.org/content/eegmmidb/1.0.0/",
+      "local_path": "data/raw/eegmmidb",
+      "version": "PhysioNet v1.0.0",
+      "native_sampling_rate_hz": 160,
+      "target_sampling_rate_hz": 160,
+      "n_subjects": 109,
+      "runs_downloaded": [
+        4,
+        8,
+        12
+      ],
+      "checksum_method": "SHA256 \u2014 verified against official PhysioNet SHA256SUMS.txt",
+      "note": "Only motor imagery runs 4, 8, 12 downloaded as per assessment brief",
+      "file_count": 327,
+      "size_mb": 795.56,
+      "status": "downloaded",
+      "downloaded_at": "2026-04-07T20:44:06.678620+00:00"
+    },
+    {
+      "name": "PTB-XL",
+      "modality": "ECG",
+      "source_url": "https://physionet.org/content/ptb-xl/get-zip/1.0.3/",
+      "landing_page": "https://physionet.org/content/ptb-xl/1.0.3/",
+      "local_path": "data/raw/ptbxl",
+      "version": "PhysioNet v1.0.3",
+      "native_sampling_rate_hz_available": [
+        100,
+        500
+      ],
+      "target_sampling_rate_hz": 100,
+      "n_records": 21799,
+      "n_patients": 18869,
+      "checksum_method": "SHA256 \u2014 verified against official PhysioNet SHA256SUMS.txt",
+      "file_count": 43598,
+      "size_mb": 4796.33,
+      "status": "downloaded",
+      "downloaded_at": "2026-04-07T20:44:06.678620+00:00"
+    }
+  ]
+}
