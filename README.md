@@ -2,8 +2,6 @@
 
 Reproducible pipeline for downloading, preprocessing, and validating multimodal time-series datasets (HAR, EEG, ECG) in preparation for downstream self-supervised learning workflows.
 
-Built as part of a technical assessment for the Research Assistant in Biomedical Data Integration role at Imperial College London (UK Dementia Research Institute).
-
 ---
 
 ## Environment Setup
